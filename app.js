@@ -28,4 +28,23 @@ console
 - js와 상호작용하긴 좋은데 긴 코드나 프로그램을 작성해야할 땐 적절치 않다.
  */
 
+// property를 가진 데이터를 저장하도록 해준다.
+// 값에 이름을 붙여 사용하고자 할 때 사용한다.
+const player = {
+    name: "chudong",
+    points: 10,
+    age: 11,
+    fat: true,
+};
 
+console.log(player);
+console.log(player.name);
+
+// const로 object를 선언했을 때
+// object 내의 값을 수정/추가하는 것은 가능
+player.fat=false; // (O)
+player.lastName = "jeon";
+
+// object를 하나의 값으로서 업데이트 하는 것은 불가능
+//player = false; // (X)
+console.log(player);
