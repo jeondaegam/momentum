@@ -101,5 +101,45 @@ Not a Number (숫자가 아님)
 ###2.9 Recap
 Js는 위에서 아래로 읽는다.
 
+###2.11 Returns
 
 
+인터렉티브; 쌍방향으로 작동!
+
+###2.13 Conditionals
+value의 type을 보기 => typeof
+```javascript
+console.log(typeof age);
+```
+// 타입 변경하기
+- parseInt
+```javascript
+console.log(typeof age, typeof parseInt(age));
+console.log(age, parseInt(age)); 
+// chrome console 에서 확인시 string과 number의 색이 다르게 표시된다.
+//사용자가 숫자가 아닌 문자를 입력했을 때 이를 감지할 수 있다.
+```
+
+#### 2.15 Conditionals part Three
+And, Or
+```javascript
+if (age >= 18 && age <=50) {
+    ...
+}
+else if (age > 99 || age <18) {
+    ...
+}
+```
+
+#### 3.0 The Document Object
+JavaScript와 HTML, CSS의 관계
+JavaScript가 브라우저를 어떻게 움직이는가?
+HTML은 접착제 같은 역할
+HTML이 CSS와 JavaScript를 가져오기 때문이다.
+JavaScript를 사용하는 이유는, HTML과 상호작용을 위해
+즉, HTML의 element들을 JavaScript를 통해 변경하고 읽을 수 있다는 것이다.
+
+#### 브라우저의 핵심 object
+document
+
+document.title ="web page title 변경 가능"

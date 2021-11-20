@@ -1,12 +1,12 @@
-/*alert("Hey, you are doing well" +
-    " \n You can do it");*/
+/*
+alert("Hey, you are doing well" +
+    " \n You can do it");
+*/
 
-console.log(99);
-console.log('okay');
-console.log("hey");
-
-//let something;
-//console.log(something); // undefined
+/* undefined
+let something;
+console.log(something);
+*/
 
 const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat"];
 console.log(daysOfWeek);
@@ -110,25 +110,92 @@ minusFive(5,10,2,34,5,9,6);
 // minusFive는 오직 첫번째 argument만 받는다.
 
 const calculator = {
-    add: function (a, b) {
-        console.log(a +"+"+b+"="+ Number(a+b));
+    plus: function (a, b) {
+        return(a + b);
     },
-    minus: function (a,b) {
-        console.log(a+"-"+b+"="+ Number(a-b));
+    minus: function (a, b) {
+        return(a - b);
     },
-    divide: function (a,b) {
-        console.log(a+"/"+b+"="+a/b);
+    divide: function (a, b) {
+        return(a / b);
     },
-    power: function (a,b) {
-        console.log(a+"^"+b+"="+a**b);
+    power: function (a, b) {
+        return(a ** b);
     },
-    multiple: function (a,b) {
-        console.log(a+"*"+b+"="+a*b);
+    times: function (a, b) {
+        return(a * b);
     }
 }
 
-calculator.add(3,4);
-calculator.minus(5,1);
-calculator.divide(10,3);
-calculator.multiple(4,2);
-calculator.power(2,3);
+const plusResult = calculator.plus(3, 4);
+const minusResult = calculator.minus(plusResult, 2);
+const timeResult = calculator.times(10, minusResult);
+
+
+/*
+const age = 96;
+function calculateKrAge(ageOfForeigner) {
+    return ageOfForeigner +2;
+}
+const krAge = calculateKrAge(age);
+
+console.log(krAge);
+*/
+
+
+
+const age = parseInt(prompt("How old are you?"));
+console.log(age);
+// prompt를 쓰지 않는 이유
+// message 창에 아무런 스타일, 즉 CSS를 적용시킬 수 없다.
+// 그리고 prompt 창이 떠있는 동안 js의 나머지 동작들을 멈추고 대기한다.
+// 어떤 브라우저는 이런 팝업을 제한하기도 하고, 아주아주 오래된 늙다리 방법
+// 요즘에는 CSS나 HTML로 직접 만든 창을 사용.
+
+// type 알아보기
+// console.log(typeof age);
+
+// 타입 변경하기
+// console.log(typeof age, typeof parseInt(age));
+// console.log(age, parseInt(age)); // chrome console 에서 확인시 string과 number의 색이 다르게 표시된다.
+//사용자가 숫자가 아닌 문자를 입력했을 때 감지할 수 있다.
+
+console.log("isNaN of age?" + isNaN(age));
+/*
+isNaN => Not a Number 인가?
+true : number가 아니다.
+false : number가 맞다.
+ */
+
+
+if (isNaN(age)) {
+    console.log("Please write a number");
+} else {
+    console.log("Thank you for writing your age.");
+}
+
+
+const canIDrink = parseInt(prompt("Enter the your age."));
+isDrinkOKay(canIDrink);
+
+// Q. 술 마셔도 되나요?
+function isDrinkOKay(age) {
+    if (isNaN(age) || age < 0) {
+        console.log("Please write a number.");
+    } else if (age < 18) {
+        console.log("You are too young");
+    } else if (age >= 18 && age <= 50) {
+        console.log("You can drink anymore.");
+    } else if (age > 50 && age <= 80) {
+        console.log("You should exercise");
+    } else if (age === 100){
+      console.log("wow you are wise");
+    } else if (age > 80) {
+        console.log("You can do whatever you want.")
+    }
+
+    // true || true === true
+    // true || false === true
+    // true && false === false
+    // true && true === false
+}
