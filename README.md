@@ -140,6 +140,27 @@ JavaScript를 사용하는 이유는, HTML과 상호작용을 위해
 즉, HTML의 element들을 JavaScript를 통해 변경하고 읽을 수 있다는 것이다.
 
 #### 브라우저의 핵심 object
-document
+console에 document를 입력하면 작성한 HTML을 가져올 수 있다.
+document는 브라우저에 이미 존재하는 object  <- html을 가리키는 객체
 
-document.title ="web page title 변경 가능"
+- console.dir(document)
+- document를 JavaScript 관점에서 object로 보여준다.
+- 즉 Js에서 HTML의 title 등의 요소를 가져와 사용할 수 있다 !
+
+title 변경
+- document.title ="web page title 변경 가능"
+
+JS는 HTML에 접근하고 읽을 수 있다,
+그리고 document는 모든 것의 시작점이다.
+document는 web browser를 의미한다.
+우린가 JavaScript에서 HTML에 접근할 수 있는 방법이다.  
+
+JS는 HTML의 element를 가져오지만, HTML 자체를 보여주지는 않아.
+object를 보여준다. JS에서 HTML을 표현하는 object를 말이다!
+
+
+JS로 정보를 가지고 올 수 있는 방법
+- document객체와, element를 가져오는 수 많은 함수들을 이용하는 것이다.
+```javascript
+document.getElementById("title")
+```

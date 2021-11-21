@@ -17,8 +17,8 @@ console.log(daysOfWeek);
 
 /* 값을 리스트로 정리 */
 const toBuy = ["potato", "tomato", "pizza"];
-console.log(toBuy[2]);
-console.log(toBuy[2235235]);
+// console.log(toBuy[2]);
+// console.log(toBuy[2235235]);
 
 
 /*
@@ -37,8 +37,8 @@ const player = {
     fat: true,
 };
 
-console.log(player);
-console.log(player.name);
+// console.log(player);
+// console.log(player.name);
 
 // const로 object를 선언했을 때
 // object 내의 값을 수정/추가하는 것은 가능
@@ -199,3 +199,9 @@ function isDrinkOKay(age) {
     // true && false === false
     // true && true === false
 }
+
+const title = document.getElementById("title");
+console.log(title);
+console.dir(title); // 더 자세히 보여준다.
+
+title.innerText = "Got you!";
