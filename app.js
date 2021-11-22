@@ -9,10 +9,10 @@ console.log(something);
 */
 
 const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat"];
-console.log(daysOfWeek);
+//console.log(daysOfWeek);
 
 daysOfWeek.push("sun");
-console.log(daysOfWeek);
+//console.log(daysOfWeek);
 
 
 /* 값을 리스트로 정리 */
@@ -52,8 +52,6 @@ console.log(player);
 // 2.7 functions
 sayHello("Cudong", 10);
 sayHello("Yeoreum", 23);
-sayHello("Sangyoon", 21);
-sayHello("Changsoon", 25);
 
 function sayHello(nameOfPerson, age) {
     console.log("Hello my name is " + nameOfPerson + " and I'm " + age);
@@ -77,9 +75,9 @@ const user = {
     },
 };
 
-console.log(user.name);
-user.sayHello("lynn"); // -> function이 user object 안에 있을 때만 사용 가능하다.
-user.sayHello("jeon");
+// console.log(user.name);
+// user.sayHello("lynn"); // -> function이 user object 안에 있을 때만 사용 가능하다.
+// user.sayHello("jeon");
 
 
 // 2.9 Recap
@@ -142,15 +140,18 @@ const krAge = calculateKrAge(age);
 console.log(krAge);
 */
 
-
+/*
+// prompt
 
 const age = parseInt(prompt("How old are you?"));
 console.log(age);
-// prompt를 쓰지 않는 이유
-// message 창에 아무런 스타일, 즉 CSS를 적용시킬 수 없다.
-// 그리고 prompt 창이 떠있는 동안 js의 나머지 동작들을 멈추고 대기한다.
-// 어떤 브라우저는 이런 팝업을 제한하기도 하고, 아주아주 오래된 늙다리 방법
-// 요즘에는 CSS나 HTML로 직접 만든 창을 사용.
+prompt를 쓰지 않는 이유
+message 창에 아무런 스타일, 즉 CSS를 적용시킬 수 없다.
+그리고 prompt 창이 떠있는 동안 js의 나머지 동작들을 멈추고 대기한다.
+어떤 브라우저는 이런 팝업을 제한하기도 하고, 아주아주 오래된 늙다리 방법
+요즘에는 CSS나 HTML로 직접 만든 창을 사용.
+
+*/
 
 // type 알아보기
 // console.log(typeof age);
@@ -160,7 +161,7 @@ console.log(age);
 // console.log(age, parseInt(age)); // chrome console 에서 확인시 string과 number의 색이 다르게 표시된다.
 //사용자가 숫자가 아닌 문자를 입력했을 때 감지할 수 있다.
 
-console.log("isNaN of age?" + isNaN(age));
+// console.log("isNaN of age?" + isNaN(age));
 /*
 isNaN => Not a Number 인가?
 true : number가 아니다.
@@ -168,15 +169,17 @@ false : number가 맞다.
  */
 
 
-if (isNaN(age)) {
-    console.log("Please write a number");
-} else {
-    console.log("Thank you for writing your age.");
-}
+// if (isNaN(age)) {
+//     console.log("Please write a number");
+// } else {
+//     console.log("Thank you for writing your age.");
+// }
 
 
-const canIDrink = parseInt(prompt("Enter the your age."));
-isDrinkOKay(canIDrink);
+
+// const canIDrink = parseInt(prompt("Enter the your age."));
+// isDrinkOKay(canIDrink);
+
 
 // Q. 술 마셔도 되나요?
 function isDrinkOKay(age) {
@@ -200,8 +203,78 @@ function isDrinkOKay(age) {
     // true && true === false
 }
 
-const title = document.getElementById("title");
-console.log(title);
-console.dir(title); // 더 자세히 보여준다.
+// JS에서 html의 h1 태그를 가져와보자.
+// const title = document.getElementById("hello");
+// console.log(title);
+// console.dir(title); // 더 자세히 보여준다.
 
+// title.innerText = "Got you!";
+// console.log(title.id)
+// console.log(title.className);
+
+// 3.2 How to get Searching For Elements
+
+// * class ID (자주 사용 X)
+// id로 object를 들고와 innerText를 변경하고, className을 출력한다.
+const title = document.getElementById("something");
+console.log(title);
 title.innerText = "Got you!";
+console.log(title.className);
+
+
+// * className 사용하기
+// return array
+// 많은 element를 한번에 들고와야 하는 경우 사용한다.
+// 하지만 대부분의 경우 class name을 모든 곳에 추가하지는 않을 것이다.
+const hi = document.getElementsByClassName("hi");
+console.log(hi);
+// hi.innerText = "Got you!";
+
+
+// * tagName으로 element 가져오기.
+// div 하위의 <h1> 태그 가져오기.
+const h1Array = document.getElementsByTagName("h1");
+console.log(h1Array); // object가 아닌 array 형태로 들고옴.
+
+/*
+element(tag)를 CSS 방식으로 가져오기.
+querySelector or querySelectorAll
+hello 라는 class 내부의 h1에 접근할 수 있다.
+*/
+
+// 1. querySelector
+// 하나의 element를 return 한다.
+//  element가 여러개더라도 가장 첫번째것만 가져옴
+const useSelector = document.querySelector(".howToUseDiv h1");
+// class=howToUseDiv를 찾고 그 안에 있는 h1을 들고 온다.
+console.log(useSelector);
+
+// 2. querySelectorAll
+// 모든 element를 들고 온다.
+// return array
+const useSelectorAll = document.querySelectorAll(".nice h1");
+console.log(useSelectorAll);
+
+//3. getElementByName
+// return array
+const name = document.getElementsByName("chudong");
+
+//
+
+console.log(name);
+
+// Selector를 이용해 ID로 element 들고오기.
+const tagById = document.querySelector("#something");
+const tagByIdObject = document.getElementById("something");
+// 둘의 차이점?
+// getElementById로는 들고온 태그의 하위 태그에 접근할 수 없다.
+// querySelector는 가능 ("#something form");
+
+console.log(tagById);
+console.log(tagByIdObject);
+
+// const titleOfSelector = document.querySelector(".hello");
+// const titleOfFunction = document.getElementsByClassName("hello");
+//
+// console.log(titleOfSelector);
+// console.log(titleOfFunction);

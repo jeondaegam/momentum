@@ -164,3 +164,60 @@ JS로 정보를 가지고 올 수 있는 방법
 ```javascript
 document.getElementById("title")
 ```
+
+#### 3.1 HTML in JavaScript
+JS를 통해 할 수 있는 것.
+1. HTML의 항목(element)들을 가지고(접근) 와서, 
+2. JS를 통해 그 항목들을 변경한다.  
+  
+브라우저에서 그냥 사용할 수 있는 document.
+document의 함수 중에는 getElementById 라는 함수가 있고,
+이 함수는 HTML에서 id를 통해 element를 찾아준다.
+element를 찾고 나면, 그 HTML에서 뭐든지 바꿀 수 있다. what ever you want!  
+html의 innerText, id, className 등등  
+
+#### Q. HTML에서 타이틀을 변경하면 되지 왜 JS를 통해 하는가?
+HTML 페이지에서 직접 타이틀을 변경하는 것은 단지 소스를 수정하는 것에 불과하다.  
+하지만 JS를 통해 타이틀을 변경 하는 것은, HTML과 JS가 상호작용 할 수 있다는 것을 의미한다.  
+예를들어 웹 페이지에 사용자가 어떤 버튼을 클릭하면 타이틀이 변경된다던지 등의
+인터렉티브한 액션들을 만들어낼 수 있다.  
+
+#### 3.2 How to get Elements and How to Search For Elements from JS in your HTML
+대부분은 id를 사용하지 않는다.  
+사용하기 편리하지만 보통 className을 사용하거나 둘 다 사용한다.  
+
+Uncaught TypeError: Cannot set properties of null (setting 'innerText')
+가져오려는 element가 null인데 null의 innerText를 변경하려고 할 때..!
+title doesn't exist show you shouldn't call innerText title
+
+getElementsByClassName : return array
+getElementsByTagName : return array
+
+querySelector : CSS Selector를 사용해 검색할 수 있다.
+                : return one element  
+querySelectorAll : return array  
+```javascript
+const title = document.querySelector(".hello h1");
+const title = document.querySelector(".hello h1:first-child");
+// this gives you one element the first one. that was found.
+
+// if you want to find all of them?
+const title = document.querySelectorAll(".hello h1");
+// return array
+console.log(title);
+```
+CSS selector  
+class(=className) : .
+id : #
+아래 두 코드는 같은 일을 한다.
+```javascript
+<h1 class="hello">Grab me!</h1>
+
+```
+```javascript
+const title = document.querySelector("#hello");
+const title = document.getElementById("hello"); 
+// 다만 getelementById로는 id 하위의 form이나 h1을 가져온다던지 하위 요소를 가져올 수 없다. 
+```
+
+
