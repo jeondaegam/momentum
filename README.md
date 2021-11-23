@@ -179,7 +179,7 @@ html의 innerText, id, className 등등
 #### Q. HTML에서 타이틀을 변경하면 되지 왜 JS를 통해 하는가?
 HTML 페이지에서 직접 타이틀을 변경하는 것은 단지 소스를 수정하는 것에 불과하다.  
 하지만 JS를 통해 타이틀을 변경 하는 것은, HTML과 JS가 상호작용 할 수 있다는 것을 의미한다.  
-예를들어 웹 페이지에 사용자가 어떤 버튼을 클릭하면 타이틀이 변경된다던지 등의
+예를들어 웹 페이지에 버튼을 클릭하면 타이틀이 변경된다던지 등의
 인터렉티브한 액션들을 만들어낼 수 있다.  
 
 ### 3.2 How to get Elements from JS in your HTML
@@ -278,3 +278,25 @@ console.dir(title);
 // object 내부의 property들의 값을 변경할 수 있다.
 ```
 
+### Events part Two
+listen 하고 싶은 event를 찾는 방법
+1. 구글에 찾고싶은 element의 이름, 예를들어 'h1 html element mdn'을 검색
+2. js의 element를 원하니 링크에 Web APIs라는 문장이 포함된 페이지를 찾자.
+3. js 관점의 HTML Heading Element라는 의미
+4. 너무 복잡하면 element를 console.dir로 출력해서 'on~' 으로 시작하는 걸 사용하면 ok.
+
+```javascript
+function handleMouseEnter(){
+    clickMe.innerText= "Mouse is here";
+}
+
+function handleMouseLeave(){
+    clickMe.innerText = "Mouse is gone!";
+}
+
+clickMe.addEventListener("mouseenter", handleMouseEnter);
+clickMe.addEventListener("mouseleave", handleMouseLeave);
+
+```
+
+대부분의 경우에 style은 CSS를 통해 변경되어야 한다.

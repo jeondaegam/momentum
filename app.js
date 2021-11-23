@@ -298,3 +298,13 @@ function handleTitleClick() {
     clickMe.style.color = color == "blue" ? "black" : "blue";
 }
 
+function handleMouseEnter(){
+    clickMe.innerText= "Mouse is here";
+}
+
+function handleMouseLeave(){
+    clickMe.innerText = "Mouse is gone!";
+}
+
+clickMe.addEventListener("mouseenter", handleMouseEnter);
+clickMe.addEventListener("mouseleave", handleMouseLeave);
