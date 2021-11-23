@@ -278,3 +278,23 @@ console.log(tagByIdObject);
 //
 // console.log(titleOfSelector);
 // console.log(titleOfFunction);
+
+// 3.3 Events
+// HTML이 app.js를 load(import)하기 때문에 document가 존재한다.
+// 그 다음에 browser가 우리의 document에 접근할 수 있게 해준다.
+
+// title color를 바꿔보자
+const clickMe = document.querySelector("div.colorChange h1");
+
+// click event listen 하기
+clickMe.addEventListener("click", handleTitleClick); // 어떤 이벤트를 listen할 건지?
+
+// title을 click하면 listen한다!,
+// 그리고 handleTitleClick를 실행한다.
+// 굳이 버튼일 필요 없다.
+
+function handleTitleClick() {
+    const color = clickMe.style.color;
+    clickMe.style.color = color == "blue" ? "black" : "blue";
+}
+

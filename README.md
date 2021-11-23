@@ -169,12 +169,12 @@ document.getElementById("title")
 JS를 통해 할 수 있는 것.
 1. HTML의 항목(element)들을 가지고(접근) 와서, 
 2. JS를 통해 그 항목들을 변경한다.  
-  
-브라우저에서 그냥 사용할 수 있는 document.
-document의 함수 중에는 getElementById 라는 함수가 있고,
-이 함수는 HTML에서 id를 통해 element를 찾아준다.
+
+document의 함수를 이용해 HTML에서 id, 등을 통해 element를 찾는다.  
 element를 찾고 나면, 그 HTML에서 뭐든지 바꿀 수 있다. what ever you want!  
 html의 innerText, id, className 등등  
+
+브라우저에서 그냥 사용할 수 있는 document.
 
 #### Q. HTML에서 타이틀을 변경하면 되지 왜 JS를 통해 하는가?
 HTML 페이지에서 직접 타이틀을 변경하는 것은 단지 소스를 수정하는 것에 불과하다.  
@@ -182,42 +182,99 @@ HTML 페이지에서 직접 타이틀을 변경하는 것은 단지 소스를 �
 예를들어 웹 페이지에 사용자가 어떤 버튼을 클릭하면 타이틀이 변경된다던지 등의
 인터렉티브한 액션들을 만들어낼 수 있다.  
 
-#### 3.2 How to get Elements and How to Search For Elements from JS in your HTML
+### 3.2 How to get Elements from JS in your HTML
+HTML에서 무언가 가져오는 방법을 배운다!
+div나 h1같은 태그를 이용해 검색하기도 하고 id를 통해 검색하기도 한다.
+모두 다른 function을 사용해서..!   
+
 대부분은 id를 사용하지 않는다.  
 사용하기 편리하지만 보통 className을 사용하거나 둘 다 사용한다.  
 
-Uncaught TypeError: Cannot set properties of null (setting 'innerText')
-가져오려는 element가 null인데 null의 innerText를 변경하려고 할 때..!
-title doesn't exist show you shouldn't call innerText title
+주의할 에러  
+    
+    Uncaught TypeError: Cannot set properties of null (setting 'innerText')
+    가져오려는 element가 없는데(=null) 그 값을 변경하려고 할 때..!
+    title doesn't exist show you shouldn't call innerText title
 
-getElementsByClassName : return array
-getElementsByTagName : return array
-
-querySelector : CSS Selector를 사용해 검색할 수 있다.
-                : return one element  
-querySelectorAll : return array  
-```javascript
-const title = document.querySelector(".hello h1");
-const title = document.querySelector(".hello h1:first-child");
-// this gives you one element the first one. that was found.
-
-// if you want to find all of them?
-const title = document.querySelectorAll(".hello h1");
-// return array
-console.log(title);
-```
 CSS selector  
-class(=className) : .
+class : .  
 id : #
-아래 두 코드는 같은 일을 한다.
+name : 
 ```javascript
 <h1 class="hello">Grab me!</h1>
-
 ```
+
+id를 통해 element를 들고 오는 방법
 ```javascript
-const title = document.querySelector("#hello");
-const title = document.getElementById("hello"); 
-// 다만 getelementById로는 id 하위의 form이나 h1을 가져온다던지 하위 요소를 가져올 수 없다. 
+// 두 코드는 같은 일을 한다.
+const title = document.querySelector("#hello"); 
+const title = document.getElementById("hello");  // hello element의 하위 요소에는 접근할 수 없다.
 ```
 
+- getElementById
+  - return one element
+- getElementsByClassName 
+  - return array
+- getElementsByTagName
+  - return array
+- getElementsByName
+  - return array
+```javascript
+const name = document.getElementsByName("chudong"); // tag에 name을 지정한 경우
+const hi = document.getElementsByClassName("hi");  // tag에 class명을 지정한 경우
+const h1Array = document.getElementsByTagName("h1"); // tag type을 검색
+
+```
+
+####Selector를 이용한 방법
+    element(tag)를 CSS 형식으로 검색할 수 있다.
+    앞서 나열한 모든 걸 selector로 할 수 있다.
+    태그 내 하위 태그에 접근할 수 있다.
+    
+- QuerySelector
+  - return one element
+- QuerySelectorAll
+  - return array
+
+```javascript
+// this gives you one element the first one. that was found.
+const title = document.querySelector(".hello h1");
+const title = document.querySelector(".hello:first-child h1");
+//class hello를 가진 div 내부의 first-child인 h1을 찾아오는 것.
+
+// if you want to find all of them?
+const title = document.querySelectorAll(".hello h1"); // return array
+```
+
+###3.3 Events
+JS의 대부분은 event를 listen하는 것이다.
+
+
+HTML element를 JS로 가져오는 방법.
+  1. HTML 페이지에서 app.js를 load한다.
+  2. app.js에서 element를 get 한다.
+
+
+#### Event listen 하기
+1. HTML element를 가져온다.
+2. addEventListener를 실행시켜준다.
+3. 이 때 listen 하고싶은 event 이름을 명시한다.
+4. event가 발생하면 호출할 function을 전달한다.
+
+```javascript
+const clickMe = document.querySelector("div.colorChange h1");
+
+clickMe.addEventListener("click", handleTitleClick);
+
+function handleTitleClick() {
+  const color = clickMe.style.color;
+  clickMe.style.color = color == "blue" ? "black" : "blue";
+```
+
+tip) element의 내부를 보고싶다면?
+```javascript
+console.dir(title);
+// object로 표시한 element를 보여준다.
+// object 내부의 property들의 값을 변경할 수 있다.
+```
 
