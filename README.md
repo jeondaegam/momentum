@@ -377,10 +377,53 @@ window.addEventListener("online", handleWindowOnline);
 
 
 ### 3.6  CSS in Javascript
-깔끔한 코드 tip) 서로 다른 언어가 섞이지 않게 하자.  
-JavaScript는 상호작용을 만들어내는 데에 적합하다.  
-CSS는 js파일에서 할 수도 있지만 style 파일 즉 CSS 파일에서 사용하자.
+깔끔한 코드 part 1) 서로 다른 언어가 섞이지 않게 하자.   
+animation 등 상호작용을 만들어내는 데에 적합한 도구는 JS.  
+style에 적합한 도구는 CSS.
 
 1. element를 찾아라
 2. event를 listen 해라
 3. 그 event에 반응해라
+
+
+### 3.7 CSS in Javascript part Two
+깔끔한 코드 part 2) "raw string"이 반복되면 상수로 만들자.  
+exam
+```javascript
+function handleTitleClick() {
+  const clickedClass = "clicked";
+
+  if (clickText.className === clickedClass) { // do not use "clicked"
+    clickText.className = "";
+  } else {
+    clickText.className = clickedClass; // do not use "clicked"
+  }
+}
+```
+
+### 3.8 CSS in Javascript part Three
+className의 문제점 
+- 이전 class를 상관하지 않고 모든 걸 교체해버린다.
+해결방법 
+- classList를 사용한다(=class를 목록으로 작업할 수 있게끔 허용한다.)
+- equals가 아닌 contains로 비교한다.
+
+```javascript
+function handleTitleClick() {
+  const clickedClass = "clicked";
+  if (clickText.classList.contains(clickedClass)) {
+    clickText.classList.remove(clickedClass);
+  } else {
+    clickText.classList.add(clickedClass);
+  }
+}
+```
+####toggle
+contains-add-remove를 한번에 해준다.
+```javascript
+function handleTitleClick() {
+  clickText.classList.toggle("clicked");
+}
+```
+
+

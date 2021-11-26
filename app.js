@@ -359,19 +359,49 @@ window.addEventListener("online", handleWindowOnline);
 
 // 3.6 CSS in JavaScript -------------------------------------------------
 
-const clickText = document.querySelector("div.clickMe");
+const clickText = document.querySelector("div.clickMe h2");
 
-function handleTitleClick() {
-    const currentColor = clickText.style.color;
-    let newColor;
-    if(currentColor ==="blue") {
-        newColor ="tomato";
-    } else {
-        newColor = "blue";
-    }
-    clickText.style.color = newColor;
-    // clickText.style.color = currentColor === "blue" ? "tomato" : "blue";
-
-}
+// function handleTitleClick() {
+//     const currentColor = clickText.style.color;
+//     let newColor;
+//     if(currentColor ==="blue") {
+//         newColor ="tomato";
+//     } else {
+//         newColor = "blue";
+//     }
+//     clickText.style.color = newColor;
+//     // clickText.style.color = currentColor === "blue" ? "tomato" : "blue";
+// }
 
 clickText.addEventListener("click", handleTitleClick);
+
+// 3.7 CSS in JS part Two ---------------------------------------
+
+// CSS를 통해 style 적용하기
+/*
+function handleTitleClick() {
+    const clickedClass = "clicked";
+    // html tag에 class 이름을 지정한다. (css에 작성한 내용이 적용됨)
+    if (clickText.className === clickedClass) {
+        clickText.className = "";
+    } else {
+        clickText.className = clickedClass; // -> HTML을 변경한다.
+    }
+}
+*/
+
+// 3.7 CSS in JS part Three ---------------------------------------
+
+// className의 문제점 => class의 이전 name을 상관하지 않고 모든 className을 교체해버린다.
+// ClassList
+// answer
+// equal 비교가 아닌 classList의 contains로 비교해준다.
+function handleTitleClick() {
+    // const clickedClass = "clicked";
+    // if (clickText.classList.contains(clickedClass)) {
+    //     clickText.classList.remove(clickedClass);
+    // } else {
+    //     clickText.classList.add(clickedClass);
+    // }
+    clickText.classList.toggle("clicked");
+}
