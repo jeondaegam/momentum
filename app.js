@@ -310,7 +310,7 @@ clickMe.addEventListener("mouseenter", handleMouseEnter);
 clickMe.addEventListener("mouseleave", handleMouseLeave());
 
 
-// 2.5 More Events ----------------------------------------------------------------------
+// 3.5 More Events ----------------------------------------------------------------------
 
 // EventListener를 실행하는 또 다른 방법
 
@@ -333,27 +333,45 @@ function handleWindowResize() {
 window.addEventListener("resize", handleWindowResize);
 // window.onresize = handleWindowResize;
 
-//copy check
+//copy
 function handleWindowCopy() {
     alert("Copy check");
 }
-window.addEventListener("copy", handleWindowCopy);
+// window.addEventListener("copy", handleWindowCopy);
 
 const h2 = document.querySelector("h2");
 //copy를 아래처럼 사용하려면 target 지정이 필요한듯, window.oncopy는 반응을 안함.
 h2.oncopy = handleWindowCopy;
 
-function handleWindowOffline() {
-    alert("SOS no WIFI");
 
-}
 
 // wifi check
-
-window.addEventListener("offline", handleWindowOffline);
-
+function handleWindowOffline() {
+    alert("SOS no WIFI");
+}
 function handleWindowOnline() {
     alert("All Goood");
 }
 
+window.addEventListener("offline", handleWindowOffline);
 window.addEventListener("online", handleWindowOnline);
+
+
+// 3.6 CSS in JavaScript -------------------------------------------------
+
+const clickText = document.querySelector("div.clickMe");
+
+function handleTitleClick() {
+    const currentColor = clickText.style.color;
+    let newColor;
+    if(currentColor ==="blue") {
+        newColor ="tomato";
+    } else {
+        newColor = "blue";
+    }
+    clickText.style.color = newColor;
+    // clickText.style.color = currentColor === "blue" ? "tomato" : "blue";
+
+}
+
+clickText.addEventListener("click", handleTitleClick);

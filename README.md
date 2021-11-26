@@ -17,6 +17,7 @@ isChudongFat = false; // (X) const로 만들었기 때문에 업데이트 불가
 let isJeonFat = true; 
 isJeonFat= false; // (O) const와 달리 값을 업데이트 할 수 있다.
 ```
+=== : 값이 일치하는지 확인
 
 이런 코드 규칙의 중요성 > 코드를 통해 의도를 알 수 있다.
 
@@ -373,3 +374,13 @@ function handleWindowOnline() {
 window.addEventListener("offline", handleWindowOffline);
 window.addEventListener("online", handleWindowOnline);
 ```
+
+
+### 3.6  CSS in Javascript
+깔끔한 코드 tip) 서로 다른 언어가 섞이지 않게 하자.  
+JavaScript는 상호작용을 만들어내는 데에 적합하다.  
+CSS는 js파일에서 할 수도 있지만 style 파일 즉 CSS 파일에서 사용하자.
+
+1. element를 찾아라
+2. event를 listen 해라
+3. 그 event에 반응해라
