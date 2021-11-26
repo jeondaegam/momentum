@@ -206,7 +206,7 @@ name :
 
 id를 통해 element를 들고 오는 방법
 ```javascript
-// 두 코드는 같은 일을 한다.
+// 두 코드는 같은 동작을 한다.
 const title = document.querySelector("#hello"); 
 const title = document.getElementById("hello");  // hello element의 하위 요소에는 접근할 수 없다.
 ```
@@ -255,7 +255,7 @@ HTML element를 JS로 가져오는 방법.
   2. app.js에서 element를 get 한다.
 
 
-#### Event listen 하기
+#### Event listen
 1. HTML element를 가져온다.
 2. addEventListener를 실행시켜준다.
 3. 이 때 listen 하고싶은 event 이름을 명시한다.
@@ -278,7 +278,7 @@ console.dir(title);
 // object 내부의 property들의 값을 변경할 수 있다.
 ```
 
-### Events part Two
+### 3.4 Events part Two
 listen 하고 싶은 event를 찾는 방법
 1. 구글에 찾고싶은 element의 이름, 예를들어 'h1 html element mdn'을 검색
 2. js의 element를 원하니 링크에 Web APIs라는 문장이 포함된 페이지를 찾자.
@@ -296,7 +296,80 @@ function handleMouseLeave(){
 
 clickMe.addEventListener("mouseenter", handleMouseEnter);
 clickMe.addEventListener("mouseleave", handleMouseLeave);
+// 호출할 function 뒤에 바로 ()를 넣으면 JS가 알아서 실행시키기 때문에 ()는 빼야 한다.
+// 소괄호를 빼면 클릭할 때 function이 실행된다.
+```
+소괄호 : 자동실행을 control 한다.
+```javascript
+handleMouseLeave(); // 이벤트 없이 자동으로 실행 된다.
+// EventListener가 필요 없는 경우 사용하면 될 것 같다.
+```
+JS로 style을 변경할 수도 있지만   
+대부분의 경우에 style은 CSS를 통해 변경되어야 한다.
 
+
+
+### 3.5 More Events
+
+#### Event Listener를 호출하는 두 가지 방법
+tip) addEventListener를 사용하면   
+.removeEventListener를 통해 event listener를 제거할 수 있다.   
+```javascript
+// 두 코드는 같은 동작을 한다.
+clickMe.addEventListener("mouseenter", handleMouseEnter);
+clickMe.onclick = handleMouseEnter;
+```
+#### Window
+참고 링크 <https://developer.mozilla.org/en-US/docs/Web/API/Window>
+
+#### Events
+- resize  
+window element의 resize event를 listen한다.  
+resize(window의 크기가 변경되는) 이벤트가 발생하면 handleWindowResize을 호출한다.
+
+```javascript
+window.addEventListener("resize", handleWindowResize);
+// or
+window.onresize = handleWindowResize;
+
+function handleWindowResize() {
+document.body.style.backgroundColor = "tomato";
+// document를 이용해 body에 접근한다.
+// 하지만 document로 body 내부의 특정 태그를 get하는건 불가능.
+// cocument의 body, head, title은 중요하기에 function으로 존재.
+const heightOutput = window.innerHeight;
+const widthOutput = window.innerWidth;
+
+    console.log("height:" , heightOutput , "widthOutput", widthOutput);
+}
 ```
 
-대부분의 경우에 style은 CSS를 통해 변경되어야 한다.
+- copy  
+ctrl+c를 감지한다.  
+```javascript
+function handleWindowCopy() {
+    alert("Copy check");
+}
+
+//copy check
+window.addEventListener("copy", handleWindowCopy);
+
+//or
+// 아래처럼 사용하려면 target 지정이 필요한듯, window.oncopy는 반응을 안함
+const h2 = document.querySelector("h2");
+h2.oncopy = handleWindowCopy;
+```
+
+- wifi  
+Connection events 
+```javascript
+function handleWindowOffline() {
+    alert("SOS no WIFI");
+}
+function handleWindowOnline() {
+  alert("All Goood");
+}
+
+window.addEventListener("offline", handleWindowOffline);
+window.addEventListener("online", handleWindowOnline);
+```

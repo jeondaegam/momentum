@@ -307,4 +307,53 @@ function handleMouseLeave(){
 }
 
 clickMe.addEventListener("mouseenter", handleMouseEnter);
-clickMe.addEventListener("mouseleave", handleMouseLeave);
+clickMe.addEventListener("mouseleave", handleMouseLeave());
+
+
+// 2.5 More Events ----------------------------------------------------------------------
+
+// EventListener를 실행하는 또 다른 방법
+
+clickMe.onclick = handleMouseEnter;
+
+function handleWindowResize() {
+    document.body.style.backgroundColor = "tomato";
+    // document를 이용해 body에 접근한다.
+    // 하지만 document로 body 내부의 특정 태그를 get하는건 불가능.
+    // cocument의 body, head, title은 중요하기에 function으로 존재.
+    const heightOutput = window.innerHeight;
+    const widthOutput = window.innerWidth;
+
+    console.log("height:" , heightOutput , "widthOutput", widthOutput);
+}
+
+// window event
+// window element의 resize event를 listen한다.
+// ==> resize(window의 크기가 변경되는) 이벤트가 발생하면 handleWindowResize을 호출해 color를 변경한다.
+window.addEventListener("resize", handleWindowResize);
+// window.onresize = handleWindowResize;
+
+//copy check
+function handleWindowCopy() {
+    alert("Copy check");
+}
+window.addEventListener("copy", handleWindowCopy);
+
+const h2 = document.querySelector("h2");
+//copy를 아래처럼 사용하려면 target 지정이 필요한듯, window.oncopy는 반응을 안함.
+h2.oncopy = handleWindowCopy;
+
+function handleWindowOffline() {
+    alert("SOS no WIFI");
+
+}
+
+// wifi check
+
+window.addEventListener("offline", handleWindowOffline);
+
+function handleWindowOnline() {
+    alert("All Goood");
+}
+
+window.addEventListener("online", handleWindowOnline);
