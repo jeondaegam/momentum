@@ -35,10 +35,24 @@ const loginForm = document.querySelector("#login-form");
 function onLoginSubmit(event){
     event.preventDefault(); // event의 기본 동작이 발생되지 않도록 막는다.
     // 이 function을 추가함으로써 form이 submit되었을 때 기본동작인 새로고침을 막는다.
-    console.log(event);
+    console.dir(event);
     console.log(loginInput.value);
 }
 
 loginForm.addEventListener("submit", onLoginSubmit);
 // function만 호출 하더라도, JS에서는 첫 번째 argument로,
 // 발생된 event에 대한 정보를 준다.
+
+
+// 4.3 Events part Two
+// 링크의 기본동작은? 클릭 시 다른 페이지 이동하는 것.
+// 이를 막아보자
+const link = document.querySelector("a");
+
+function handleLinkClick(event) {
+    event.preventDefault();
+    console.dir(event);
+    // 클릭 이벤트에 대한 정보이므로 object 이름이 PointerEvent로 보이게 된다.
+}
+
+link.addEventListener("click", handleLinkClick);
