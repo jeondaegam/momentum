@@ -497,6 +497,20 @@ user 정보를 저장하도록 하고싵다면?
 
 ####4.2 Events(submit)
 
-form의 submit  
-submit이라는 event가 발생하는걸 막거나   
-중간에 submit이 발생했다는 것을 파악하자.
+### Prevent Submit
+form의 submit
+- 엔터키 or 버튼 클릭 시 발생한다.
+- 기본 동작으로 브라우저 새로고침이 일어난다.
+
+event의 기본 동작을 방지 하는 방법
+- preventDefault();
+- 해당 function을 추가함으로써 form이 submit 되었을 때 기본동작인 새로고침을 막는다.
+```javascript
+function onLoginSubmit(event){
+    event.preventDefault(); // event의 기본 동작이 발생되지 않도록 막는다.
+}
+
+loginForm.addEventListener("submit", onLoginSubmit);
+```
+tip ) function만 호출 하더라도, JS에서는 첫 번째 argument로  
+발생된 event에 대한 정보를 넘겨준다.
