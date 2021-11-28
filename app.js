@@ -32,14 +32,14 @@ function onLoginBtnClick() {
 const loginForm = document.querySelector("#login-form");
 // 4.2 submit 감지하기 (enter key or button click시 발생)
 // submit을 감지해서 페이지 새로고침이 일어나지 않도록 하자
-function onLoginSubmit(event){
+function onLoginSubmit(event) {
     event.preventDefault(); // event의 기본 동작이 발생되지 않도록 막는다.
     // 이 function을 추가함으로써 form이 submit되었을 때 기본동작인 새로고침을 막는다.
     console.dir(event);
     console.log(loginInput.value);
 }
 
-loginForm.addEventListener("submit", onLoginSubmit);
+// loginForm.addEventListener("submit", onLoginSubmit);
 // function만 호출 하더라도, JS에서는 첫 번째 argument로,
 // 발생된 event에 대한 정보를 준다.
 
@@ -56,3 +56,24 @@ function handleLinkClick(event) {
 }
 
 link.addEventListener("click", handleLinkClick);
+
+
+// 4.4 form을 제출하면 로그인 창을 사라지게 만들자.
+
+const greeting = document.querySelector("#greeting");
+const HIDDEN_CLASSNAME = "hidden";
+
+function handleLoginSubmit(event) {
+    event.preventDefault();
+    const username = loginInput.value;
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+
+    //표시할 텍스트가 있으면 <h1>에 표시되도록 하자자
+    // greeting.innerHTML = "Hello " + username;
+    greeting.innerText = `Hello ${username} ~`; // 더 새로운 방법
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+
+}
+
+loginForm.addEventListener("submit", handleLoginSubmit);
+

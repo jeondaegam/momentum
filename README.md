@@ -531,3 +531,38 @@ link.addEventListener("click", handleLinkClick);
 tip )<https://javascript.info/pointer-events>
 MouseEvent보다 PointerEvent가 더 많은 기능을 포함하고 있어서  
 이제는 PointerEvent를 사용한다. (전자기기가 다양해져서 나왔다고 함)  
+
+
+### 4.4 Getting Username
+Login 버튼을 화면에서 사라지게 하는 방법
+1. HTML 요소 자체를 제거한다.  
+2. CSS를 이용해 숨긴다.  
+
+#### Login 유저에게 인사하기!
+```javascript
+const greeting = document.querySelector("#greeting");
+const HIDDEN_CLASSNAME = "hidden";
+
+function handleLoginSubmit(event) {
+    event.preventDefault();
+    const username = loginInput.value;
+    loginForm.classList.add(HIDDEN_CLASSNAME);
+
+    //표시할 텍스트가 있으면 <h1>에 표시되도록 하자자
+    // greeting.innerHTML = "Hello " + username;
+    greeting.innerText = `Hello ${username} ~`; // 더 새로운 방법
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+
+loginForm.addEventListener("submit", handleLoginSubmit);
+```
+  
+- display:none vs visibility:hidden  
+display:none : 잡아둔 공간도 사라진다.  
+visibility:hidden : 잡아둔 공간은 유지된다.
+
+- 변수와 String 결합하기
+```javascript
+    greeting.innerHTML = "Hello " + username;
+    greeting.innerText = `Hello ${username} ~`; // `백틱`을 사용한다.
+```
