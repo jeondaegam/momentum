@@ -440,7 +440,63 @@ function handleTitleClick() {
   clickText.classList.toggle("clicked");
 }
 ```
+##LOGIN
+### 4.0 Input Value
 
-### 4.0 LOGIN
+JS가 value를 기억하는 방법  
+모든 것은 HTML에서 시작한다.
+HTML을 통해 입력받고 그 element를 JS에 끌고 오는 것!  
 
+classname은 다른 곳에서 다시 사용할 수 없다.
+#### input button
+```html
+<div id="login-form"> <!--id, calssname중 아무거나 ok-->
+    <input type="text" placeholder="what is your name?"/>
+    <button>Log In</button>
+</div>
+```
 
+tip ) 찾은 element의 내부 element를 추가로 검색할 수 있다 !  
+```javascript
+const loginForm = document.querySelector("#login-form");
+const loginInput = loginForm.querySelector("input"); // loginForm 내부에서 input tag 검색
+const loginButton = loginForm.querySelector("button");
+```
+
+코드를 줄이고 싶다면?
+```javascript
+const loginInput = document.querySelector("#login-form input");
+const loginButton = document.querySelector("#login-form button");
+```
+
+click event
+```javascript
+function onLoginBtnClick(){
+    console.log(loginInput.value);
+}
+// login button을 클릭하면 input form에 입력된 vlue를 가져온다.
+loginButton.addEventListener("click", onLoginBtnClick);
+``` 
+#### 4.1 Form Submission
+Js에서 구현하는 대신 할 수 있다면 HTML의 기본 속성을 최대한 이용하기  
+
+필수 입력 항목으로 만들기
+- required
+```html
+<form id="login-form">
+    <input required maxlength="15" type="text" placeholder="what is your name?"/>
+    <button>Log In</button>
+</form>
+```
+input을 통해 유효성 검사를 하고싶다면
+input이 form 안에 있어야 한다.
+
+웹사이트를 재시작 시킨다 -> why? form이 submit되고 있기 때문
+login 버튼을 눌렀을 때, 브라우저가 새로고침 하지 않고 
+user 정보를 저장하도록 하고싵다면?
+
+####4.2 Events(submit)
+
+form의 submit  
+submit이라는 event가 발생하는걸 막거나   
+중간에 submit이 발생했다는 것을 파악하자.
