@@ -67,7 +67,7 @@ const player = {
 };
 ```
 #### const로 object를 선언했을 때
-object 내의 값을 수정/추가하는 것은 가능  
+object 내의 값을 수정,추가하는 것은 가능  
 ```javascript
 player.fat=false; // (O)
 player.lastName = "jeon"; // (O)
@@ -101,6 +101,18 @@ Not a Number (숫자가 아님)
 
 ###2.9 Recap
 Js는 위에서 아래로 읽는다.
+데이터를 만들 수 있는 두가지 방법
+```javascript
+// const (=> 값 업데이트 불가능)
+const a =5;
+const isFat =true;
+isFat = false; // (X) 
+
+// 대신 let을 사용하자! (값의 업데이트 가능)
+let isFat = true;
+isFat = false; 
+```
+
 
 ###2.11 Returns
 
@@ -390,6 +402,8 @@ style에 적합한 도구는 CSS.
 깔끔한 코드 part 2) "raw string"이 반복되면 상수로 만들자.  
 exam
 ```javascript
+const clickText = document.querySelector("div.clickMe h2");
+
 function handleTitleClick() {
   const clickedClass = "clicked";
 
@@ -403,7 +417,8 @@ function handleTitleClick() {
 
 ### 3.8 CSS in Javascript part Three
 className의 문제점 
-- 이전 class를 상관하지 않고 모든 걸 교체해버린다.
+- 이전 class를 상관하지 않고 모든 걸 교체해버린다.  
+
 해결방법 
 - classList를 사용한다(=class를 목록으로 작업할 수 있게끔 허용한다.)
 - equals가 아닌 contains로 비교한다.
@@ -411,7 +426,7 @@ className의 문제점
 ```javascript
 function handleTitleClick() {
   const clickedClass = "clicked";
-  if (clickText.classList.contains(clickedClass)) {
+  if (clickText.classList.contains(clickedClass)) { // element의 classList를 가져온다.
     clickText.classList.remove(clickedClass);
   } else {
     clickText.classList.add(clickedClass);
@@ -425,5 +440,7 @@ function handleTitleClick() {
   clickText.classList.toggle("clicked");
 }
 ```
+
+### 4.0 LOGIN
 
 
