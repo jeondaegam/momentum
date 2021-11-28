@@ -566,3 +566,33 @@ visibility:hidden : 잡아둔 공간은 유지된다.
     greeting.innerHTML = "Hello " + username;
     greeting.innerText = `Hello ${username} ~`; // `백틱`을 사용한다.
 ```
+
+### 4.5 Saving Username
+localStorage를 사용해보자
+- key-value 형식으로 저장한다. 
+- 마치 미니 DB 같은 API이다,
+
+여기서 localStorage를 사용하는 이유?
+사용이 가장 간단하다.
+
+1. localStorage에 username이 존재하는지 확인
+2. form을 지우고 h1 요소가 표시되도록 한다.
+3. username이 없다면 form이 먼저 표시되도록 한다.
+
+### 4.7 Super Recap
+
+1. JS가 localStorage를 확인한다.
+3. localStorage의 username이 null 이라면 ?
+   - login form의 hidden class를 삭제하여 form을 보여준다.
+   - login form에 addEventListener를 더해 submit을 기다린다.
+4. null이 아니라면?
+   - hello message를 보여준다. 
+   
+* submit event가 발생하면 ?
+  - onLoginSubmit 함수를 실행한다.
+  - submit의 기본동작인 새로고침 event를 prevent 한다.
+  - inputForm.value를 localStorage에 저장한다.
+  - login form을 다시 숨겨준다.
+  - paintGreetings를 호출한다. (hello message)
+
+tip) local storage에 없는 값을 불러온다면 null을 받는다.

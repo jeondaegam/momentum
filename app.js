@@ -30,6 +30,9 @@ function onLoginBtnClick() {
 */
 
 const loginForm = document.querySelector("#login-form");
+// logout
+const logoutForm = document.querySelector("#logout-form");
+
 // 4.2 submit 감지하기 (enter key or button click시 발생)
 // submit을 감지해서 페이지 새로고침이 일어나지 않도록 하자
 function onLoginSubmit(event) {
@@ -62,18 +65,77 @@ link.addEventListener("click", handleLinkClick);
 
 const greeting = document.querySelector("#greeting");
 const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY="username";
 
-function handleLoginSubmit(event) {
+// function handleLoginSubmit(event) {
+//     event.preventDefault();
+//     const username = loginInput.value;
+//     loginForm.classList.add(HIDDEN_CLASSNAME);
+//
+//     //표시할 텍스트가 있으면 <h1>에 표시되도록 하자자
+//     // greeting.innerHTML = "Hello " + username;
+//     greeting.innerText = `Hello ${username} ~`; // 더 새로운 방법
+//     greeting.classList.remove(HIDDEN_CLASSNAME);
+//
+//     localStorage.setItem("username", username);
+//
+// }
+
+// loginForm.addEventListener("submit", handleLoginSubmit);
+
+// 4.5 Saving Username
+// localStorage를 사용해보자
+// key-value 형식으로 저장한다. 마치 미니 DB 같은 API이다,
+
+// 1. localStorage에 username이 존재하는지 확인
+// 2. form을 표시하지 않고 바로 h1요소가 표시되도록
+// 3. 유저 정보가 없다면 form이 먼저 표시되도록
+
+function onLoginSubmit(event) {
     event.preventDefault();
-    const username = loginInput.value;
     loginForm.classList.add(HIDDEN_CLASSNAME);
+    const username = loginInput.value;
 
-    //표시할 텍스트가 있으면 <h1>에 표시되도록 하자자
-    // greeting.innerHTML = "Hello " + username;
-    greeting.innerText = `Hello ${username} ~`; // 더 새로운 방법
-    greeting.classList.remove(HIDDEN_CLASSNAME);
-
+    //표시할 텍스트가 있으면 <h1>에 표시되도록 하자
+    localStorage.setItem(USERNAME_KEY, username);
+    paintGreetings(username);
 }
 
-loginForm.addEventListener("submit", handleLoginSubmit);
+function isUserName() {
+    const savedUsername = localStorage.getItem(USERNAME_KEY);
+    //username이 없으면 submit handler를 호출
+    if (savedUsername === null) {
+        //show the login form
+        loginForm.classList.remove(HIDDEN_CLASSNAME);
+        loginForm.addEventListener("submit", onLoginSubmit);
+    } else {
+        //show the greetings, hidden login form
+        // greeting.classList.remove(HIDDEN_CLASSNAME);
+        // greeting.innerText = `Hello ${savedUsername} ~`; // 더 새로운 방법
+        paintGreetings(savedUsername);
+        logoutForm.classList.remove(HIDDEN_CLASSNAME);
+    }
+}
 
+// 반복 작업 function으로 묶어주기.
+function paintGreetings(username) {
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+
+isUserName();
+loginForm.addEventListener("submit", onLoginSubmit);
+
+
+
+logoutForm.addEventListener("click", onLogoutClick);
+
+function onLogoutClick() {
+    // remove user name
+    localStorage.removeItem(USERNAME_KEY);
+    // show login form
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+}
+
+
+// 그럼 logout할때도 form submit을 사용해야하나? => 버튼 사용해도 되지 않을까)
