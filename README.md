@@ -635,13 +635,25 @@ padEnd
 - Math.random() * 10
   - 0에서 10사이의 숫자들을 얻을 수 있다.
 
-랜덤 숫자를 Integer로 만들기
-Math.round() // 0.0~0.4 반내림, 0.5~ 반올림
-Math.ceil() // 모두 반올림 한다. 1.1도 2로 반올림. 숫자를 천장(ceil)까지 올린다.
-Math.floor() // 모두 반내림 한다. 마루(floor)까지 숫자를 내려준다. 1.9999도 1이됨.
+Math 객체 기능
+- 랜덤 숫자를 Integer로 만들기
+- Math.round() // 반올림
+- Math.ceil() // 올림 (1.1 => 2)
+- Math.floor() // 내림 (1.9999 => 1)
 
 ```javascript
 const todaysQuotes = quotes[Math.floor(Math.random() * quotes.length)];
 // quotes.length까지의 숫자를 random으로 뽑는데, 모두 반내림 한다.
+```
+
+### 6.1 Background
+JS에서 html 요소를 생성해보자.
+
+1. img tag 생성
+2. body에 element를 추가한다.
+```javascript
+const bgImage = document.createElement("img"); 
+document.body.appendChild(bgImage); // body의 가장 마지막에 append
+document.body.prepend(bgImage); // body의 맨 위에 append
 ```
 
