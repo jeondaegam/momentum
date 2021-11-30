@@ -629,3 +629,19 @@ padEnd
 "1".padStart(2,"0"); // string의 길이가 2가 되도록 시작부분에 0을 채운다.
 "1".padEnd(3,"0"); // string의 뒷부분에 0을 채운다.
 ```
+
+### 6.0 Quotes
+랜덤 명언 보여주기  
+- Math.random() * 10
+  - 0에서 10사이의 숫자들을 얻을 수 있다.
+
+랜덤 숫자를 Integer로 만들기
+Math.round() // 0.0~0.4 반내림, 0.5~ 반올림
+Math.ceil() // 모두 반올림 한다. 1.1도 2로 반올림. 숫자를 천장(ceil)까지 올린다.
+Math.floor() // 모두 반내림 한다. 마루(floor)까지 숫자를 내려준다. 1.9999도 1이됨.
+
+```javascript
+const todaysQuotes = quotes[Math.floor(Math.random() * quotes.length)];
+// quotes.length까지의 숫자를 random으로 뽑는데, 모두 반내림 한다.
+```
+
