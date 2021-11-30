@@ -596,3 +596,36 @@ localStorage를 사용해보자
   - paintGreetings를 호출한다. (hello message)
 
 tip) local storage에 없는 값을 불러온다면 null을 받는다.
+
+### 5.0 CLOCK - Intervals
+intervals ?
+- 매일 일어나야 하는 무언가를 말한다.
+- 정한 시간마다 function을 실행시키게 해준다.
+- 매 2초마다 무슨 일이 일어나게 하고싶을 때 interval을 사용한다.
+-  argument 1: 호출할 function
+-  argument 2: 호출 간격을 몇 ms로 할지 (1초:1000ms)
+
+timeout ?
+- n초 뒤, function을 한 번 호출하고 끝낸다.
+```javascript
+function sayHello(){
+    console.log("hello");
+}
+
+setInterval(sayHello, 5000); // 5초 후 호출하고 5초 단위로 계속 호출
+setTimeout(sayHello, 5000); // 5초 후 호출하고 끝낸다.
+```
+
+### 5.2 PadStart()
+내가 가진 String을 보다 길게 만들어야할 때 사용한다.
+
+padStart
+- String의 시작부분에 padding을 추가한다.
+
+padEnd
+- String의 뒷부분에 padding을 추가한다.
+
+```javascript
+"1".padStart(2,"0"); // string의 길이가 2가 되도록 시작부분에 0을 채운다.
+"1".padEnd(3,"0"); // string의 뒷부분에 0을 채운다.
+```
