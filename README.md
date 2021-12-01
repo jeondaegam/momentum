@@ -632,8 +632,8 @@ padEnd
 
 ### 6.0 Quotes
 랜덤 명언 보여주기  
-- Math.random() * 10
-  - 0에서 10사이의 숫자들을 얻을 수 있다.
+- Math.random() 
+  - 0에서 1사이의 랜덤숫자를 얻을 수 있다.
 
 Math 객체 기능
 - 랜덤 숫자를 Integer로 만들기
@@ -653,7 +653,8 @@ JS에서 html 요소를 생성해보자.
 2. body에 element를 추가한다.
 ```javascript
 const bgImage = document.createElement("img"); 
-document.body.appendChild(bgImage); // body의 가장 마지막에 append
+document.body.appendChild(bgImage); // body의 가장 뒤에 append
 document.body.prepend(bgImage); // body의 맨 위에 append
 ```
 
+### 7.0 Todo list Setup
