@@ -658,3 +658,8 @@ document.body.prepend(bgImage); // body의 맨 위에 append
 ```
 
 ### 7.0 Todo list Setup
+
+### 7.2 Deleting To Dos
+#### 버튼을 클릭하면 Todo 삭제하기
+event.target : event(click)가 발생한 element    
+event.target.parentElemenet : 클릭이 발생한 target element 의 부모.
