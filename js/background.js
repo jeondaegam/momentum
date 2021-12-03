@@ -4,12 +4,12 @@ const images = ["0.jpg", "1.jpg", "2.jpg", "3.jpg"];
 // Math.random()으로 나온 숫자에 images.length 값을 곱한 숫자를 내림 한다.
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 
-console.log(chosenImage);
+// console.log(chosenImage);
 
 // 1. html new element를 만든다 !!
 const bgImage = document.createElement("img");
 
-console.log(bgImage);
+// console.log(bgImage);
 
 bgImage.src =`img/${chosenImage}`;
 

@@ -2,13 +2,17 @@ const toDoForm = document.getElementById("todo-form");
 const todoList = document.getElementById("todo-list");
 const toDoInput = toDoForm.querySelector("input");
 // const toDoInput = document.querySelector("#todo-form input");
+const TODOS_KEY = "todos";
+const toDos = [];
 
 // form의 새로고침을 막는다.
 function handleToDoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value; // input창에 입력된 text를 들고 온다.
     toDoInput.value = "";
+    toDos.push(newTodo);
     paintToDo(newTodo);
+    saveToDos();
 }
 
 // append는 맨 마지막에 놓여져야 한다.
@@ -35,4 +39,23 @@ function deleteToDo(event) {
     // console.dir(event.target.parentElement.innerText);
 }
 
+function saveToDos() {
+    localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+}
+
+function sayHello() {
+    console.log("Hello");
+}
+
+
+function isToDoList() {
+    const savedToDos = localStorage.getItem(TODOS_KEY);
+    if (savedToDos) { // !== null
+        const parsedToDos = JSON.parse(savedToDos);
+        console.log("there is it already ", parsedToDos);
+        parsedToDos.forEach(sayHello);
+    }
+}
+
+isToDoList();
 toDoForm.addEventListener("submit", handleToDoSubmit);

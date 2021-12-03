@@ -663,3 +663,22 @@ document.body.prepend(bgImage); // body의 맨 위에 append
 #### 버튼을 클릭하면 Todo 삭제하기
 event.target : event(click)가 발생한 element    
 event.target.parentElemenet : 클릭이 발생한 target element 의 부모.
+
+### 7.3 Saving To Dos
+localStorage에는 text만 저장 가능. array (X)
+
+#### object를 string으로 변경하기
+JSON.stringify();
+    JS Object, array 또는 어떤 JS 코드건 string으로 만들어준다.
+
+```javascript
+const player = {name: "hey"}
+
+JSON.stringify(player);
+JSON.stringify([1,2,3,4]); // array -> string (ok)
+```
+#### 단순한 string을 JS object로 변경하기
+JSON.parse();
+```javascript
+JSON.parse("[1,2,3,4]");
+```
