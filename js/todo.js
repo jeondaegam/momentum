@@ -43,17 +43,19 @@ function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
 
-function sayHello() {
-    console.log("Hello");
-}
-
-
 function isToDoList() {
+
+    // tip ) forEach를 통해 처리되고 있는 item 또한 free로 제공해준다.
+    function sayHello(item) {
+        console.log("Hello", item);
+    }
+
     const savedToDos = localStorage.getItem(TODOS_KEY);
     if (savedToDos) { // !== null
         const parsedToDos = JSON.parse(savedToDos);
         console.log("there is it already ", parsedToDos);
-        parsedToDos.forEach(sayHello);
+        // parsedToDos.forEach(sayHello);
+        parsedToDos.forEach((item) => console.log("this is turn of ", item));
     }
 }
 
