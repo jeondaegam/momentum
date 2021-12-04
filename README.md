@@ -728,3 +728,12 @@ const array = [1,2,3,4];
 const newArr = array.filter((item)=> item>2);
 // array에서 2보다 큰 숫자만 남겨둔다. => new Arr = [3,4]
 ```
+
+### 8.0 Geolocation 
+navigator.geolocation
+코드 10줄로 user의 위치를 알 수 있다.
+```javascript
+//argument 1 : 성공적으로 실행되었을 때 호출할 function
+//argument 2 : 실행 실패 시 호출할 function
+navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
+```
