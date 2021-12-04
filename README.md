@@ -737,3 +737,36 @@ navigator.geolocation
 //argument 2 : 실행 실패 시 호출할 function
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
 ```
+
+### 8.1
+What is a 'API'?
+- API는 다른 서버와 이야기할 수 있는 방법이다.
+
+#### open weather map 서버와 이야기 해보자!
+(백엔드로 JS를 사용하고 싶다면 wetube를 확인)
+API는 promise이다.
+- 시간이 좀 걸린 뒤에 일어나는 것.
+- 서버에 뭔가 물어봤는데 서버 응답하는데 5분 걸린다면 5분을 기다려야 한다.
+- 그러기에 then()을 사용한다.
+
+JS를 통해 url을 부르는 방법 (chrome -> network 통해 확인)   
+fetch 
+```javascript
+const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+fetch(url);
+```
+서버의 응답을 기다리기 위해 then을 사용한다.
+```javascript
+    // 서버에게 응답이 오면 => response의 json을 가져온다. 
+    // 그리고 json의 data를 가져와 html 페이지에 보여준다.
+    fetch(url).then((response) => response.json()).then((data) => {
+
+        // 날씨를 보여주기 위한 html element를 가져온다.
+        const weather = document.querySelector("#weather span:first-child");
+        const city = document.querySelector("#weather span:last-child");
+
+        // text로 보여준다.
+        weather.innerText = `${data.weather[0].main} / ${data.main.temp}`;
+        city.innerText = data.name;
+    });
+```
