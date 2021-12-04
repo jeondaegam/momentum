@@ -685,8 +685,8 @@ JSON.parse("[1,2,3,4]");
 
 
 ### 7.4 Loading To Dos part One
-forEach  
-- array의 각 item마다 function을 실행하고 싶을 때 사용한다.
+Q.array의 각 item마다 function을 실행하고 싶다면?
+방법 1. forEach
 
 tip ) forEach를 통해 처리되고 있는 item 또한 free로 제공된다.
 ```javascript
@@ -696,7 +696,35 @@ function sayHello(item) {
     console.log("this is turn of ", item);
 }
 ```
-짧은 function을 만들기 싫다면?
+
+방법 2. Arrow Function 
+- 짧은 function을 따로 만들기 싫을 때
 ```javascript
 parsedToDos.forEach((item) => console.log("this is turn of ", item));
+```
+
+### 7.6~7.8 Deleting To Dos part One
+1. 클릭한 toDo를 삭제하기 위해 id를 준다.
+2. 이를 위해 toDo를 object로 만든다.
+
+todo의 text를 기반으로 삭제할 경우 중복된 텍스트가 있을 수 있으므로
+unique id가 필요하다.  
+
+Date.now()를 이용해 random 숫자를 만든다.
+- 밀리초(1000분의1초)를 주는 함수
+- 랜덤 숫자가 필요할 때 유용하다.
+
+위에서 만든 random key를 li.id 값으로 사용한다.  
+
+#### filter
+Array에서 특정한 값들만 걸러서 새로운 array를 만들 수 있다.
+```javascript
+//exam 1
+toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+// 클릭한 버튼의 id와 다른 toDo는 남겨둔다.
+
+//exam 2
+const array = [1,2,3,4];
+const newArr = array.filter((item)=> item>2);
+// array에서 2보다 큰 숫자만 남겨둔다. => new Arr = [3,4]
 ```
