@@ -144,15 +144,26 @@ else if (age > 99 || age <18) {
 }
 ```
 
-#### 3.0 The Document Object
-JavaScript와 HTML, CSS의 관계
-JavaScript가 브라우저를 어떻게 움직이는가?
-HTML은 접착제 같은 역할
-HTML이 CSS와 JavaScript를 가져오기 때문이다.
-JavaScript를 사용하는 이유는, HTML과 상호작용을 위해
-즉, HTML의 element들을 JavaScript를 통해 변경하고 읽을 수 있다는 것이다.
+### 3.0 The 'Document' Object
+#### What is a 'Document'?
+- basic object of the browser.
+- Already included in the browser for free that you can access.
 
-#### 브라우저의 핵심 object
+document가 모든 것을의 시작점이다.
+왜냐하면 우리의 web site를 의미하기 때문이다.  
+HTM은 접착제로써 CSS와 JS를 연결하는 역할을 한다.
+
+JS가 브라우저를 어떻게 움직이는가?
+#### JavaScript를 사용하는 이유?
+상호작용을 하도록 만들기 위해.  
+HTML의 element들을 JS를 통해 변경하고 읽을 수 있다.
+
+#### 브라우저의 핵심 object 'Document'
+document를 이용해 HTML의 요소에 접근할 수 있다.  
+document는 html 요소를 JS 형식으로 보여준다!  
+=> 이를 통해 html과 JS는 서로 연결되어있다는 것을 알 수 있다.  
+
+document는 브라우저에서 
 console에 document를 입력하면 작성한 HTML을 가져올 수 있다.
 document는 브라우저에 이미 존재하는 object  <- html을 가리키는 객체
 
@@ -160,8 +171,11 @@ document는 브라우저에 이미 존재하는 object  <- html을 가리키는 
 - document를 JavaScript 관점에서 object로 보여준다.
 - 즉 Js에서 HTML의 title 등의 요소를 가져와 사용할 수 있다 !
 
-title 변경
-- document.title ="web page title 변경 가능"
+💡 console에 테스트 해보자.
+```javascript
+document.title; // 우리가 html 페이지에 작성한 title을 볼 수 있다. 
+document.title ="just gogo";
+```
 
 JS는 HTML에 접근하고 읽을 수 있다,
 그리고 document는 모든 것의 시작점이다.
@@ -260,6 +274,11 @@ const title = document.querySelectorAll(".hello h1"); // return array
 ```
 
 ###3.3 Events
+What is an 'Event'?
+- 예를 들어 click을 하면 그게 event
+- h1 위로 마우스가 올라가도 event
+- 입력을 끝내거나, 이름을 적거나, enter를 누르거나, wifi가 끊기거나 모든게 event이다.
+
 JS의 대부분은 event를 listen하는 것이다.
 
 
@@ -385,6 +404,20 @@ function handleWindowOnline() {
 
 window.addEventListener("offline", handleWindowOffline);
 window.addEventListener("online", handleWindowOnline);
+```
+
+### function을 선언하는 방법
+```javascript
+// 방법 1
+const superHandler = {
+    handleMouseEnter: function () {
+        h1.innerText = "The mouse is here!";
+    },
+}
+// 방법 2
+function handleMouseEnter () {
+    h1.innerText = "The mouse is here!";
+}
 ```
 
 
@@ -743,6 +776,11 @@ What is a 'API'?
 - API는 다른 서버와 이야기할 수 있는 방법이다.
 
 #### open weather map 서버와 이야기 해보자!
+
+#### API 정보
+<https://openweathermap.org/current#geo>
+- By geographic coordinates 
+
 (백엔드로 JS를 사용하고 싶다면 wetube를 확인)
 API는 promise이다.
 - 시간이 좀 걸린 뒤에 일어나는 것.
